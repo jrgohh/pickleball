@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0b1620">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Pickleball paddle</title>
+<link rel="stylesheet" href="css/controller.css">
+</head>
+<body>
+
+<!-- Join -->
+<section id="join" class="screen">
+  <h1>Pickleball</h1>
+  <p class="sub">Your phone is the paddle. Hold it like a paddle handle and swing.</p>
+  <label>Room
+    <input id="room" maxlength="4" autocomplete="off" autocapitalize="characters" spellcheck="false">
+  </label>
+  <label>Your name
+    <input id="name" maxlength="14" autocomplete="off" spellcheck="false">
+  </label>
+  <label>Swing sensitivity
+    <div class="seg" id="sens">
+      <button data-v="low">Low</button>
+      <button data-v="medium">Medium</button>
+      <button data-v="high">High</button>
+    </div>
+  </label>
+  <button id="join-btn" class="primary">Join game</button>
+  <p id="join-err" class="err"></p>
+</section>
+
+<!-- Paddle -->
+<section id="pad" class="screen" hidden>
+  <header class="bar">
+    <span id="chip" class="chip">P1</span>
+    <span id="me" class="me"></span>
+    <span id="conn" class="conn"><span class="dot"></span><span class="conn-text">Connecting</span></span>
+  </header>
+
+  <div id="zone" class="zone">
+    <div id="status" class="status">Connecting</div>
+    <div id="sub" class="status-sub"></div>
+    <div class="meter"><div id="meter-fill"></div></div>
+    <div id="meter-label" class="meter-label">Swing to test power</div>
+    <button id="action" class="primary action" hidden></button>
+    <button id="action2" class="ghost action" hidden></button>
+    <p id="motion-note" class="note" hidden>Motion sensors unavailable. Tap this area to swing.</p>
+  </div>
+
+  <footer class="mods">
+    <button id="dink" class="mod">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16c3-6 13-6 16 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      Hold: Dink
+    </button>
+    <button id="lob" class="mod">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19C6 3 18 3 21 19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      Hold: Lob
+    </button>
+  </footer>
+</section>
+
+<script src="vendor/peerjs.min.js"></script>
+<script type="module" src="js/controller.js"></script>
+</body>
+</html>

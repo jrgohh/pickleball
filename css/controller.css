@@ -1,0 +1,68 @@
+:root {
+  --bg: #0b1620;
+  --line: rgba(255, 255, 255, 0.1);
+  --text: #eef2f4;
+  --muted: #8a9aa6;
+  --accent: #e4f24c;
+  --me: #f0a43a;
+  --font: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); font-family: var(--font); }
+body { overscroll-behavior: none; touch-action: manipulation; -webkit-user-select: none; user-select: none; }
+[hidden] { display: none !important; }
+
+.screen { min-height: 100dvh; display: flex; flex-direction: column; padding: max(24px, env(safe-area-inset-top)) 22px max(20px, env(safe-area-inset-bottom)); }
+
+#join { gap: 18px; justify-content: center; max-width: 440px; margin: 0 auto; }
+h1 { margin: 0; font-size: 32px; letter-spacing: -0.02em; }
+.sub { margin: -6px 0 6px; color: var(--muted); line-height: 1.45; }
+label { display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: var(--muted); font-weight: 600; }
+input { font: 600 20px var(--font); color: var(--text); background: rgba(255, 255, 255, 0.05); border: 1px solid var(--line); border-radius: 6px; padding: 14px; outline: none; }
+input:focus { border-color: rgba(255, 255, 255, 0.35); }
+#room { text-transform: uppercase; letter-spacing: 0.1em; font-family: ui-monospace, Menlo, monospace; }
+
+.seg { display: flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.seg button { flex: 1; border: 0; border-right: 1px solid var(--line); background: transparent; color: var(--muted); padding: 13px 4px; font: 600 15px var(--font); }
+.seg button:last-child { border-right: 0; }
+.seg button.on { background: rgba(255, 255, 255, 0.09); color: var(--text); }
+
+button.primary { border: 0; border-radius: 6px; padding: 17px; font: 700 17px var(--font); background: var(--accent); color: #141a10; }
+button.ghost { border: 1px solid var(--line); border-radius: 6px; padding: 15px; font: 600 16px var(--font); background: transparent; color: var(--text); }
+.err { color: #f08f7f; min-height: 1.2em; margin: 0; font-size: 14px; }
+
+/* pad */
+#pad { padding-left: 16px; padding-right: 16px; gap: 14px; }
+.bar { display: flex; align-items: center; gap: 10px; }
+.chip { background: var(--me); color: #111; font-weight: 800; font-size: 13px; padding: 4px 8px; border-radius: 4px; }
+.me { flex: 1; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.conn { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; }
+.conn .dot { width: 8px; height: 8px; border-radius: 50%; background: #f0c27a; }
+.conn.ok .dot { background: #8fd18a; }
+.conn.bad .dot { background: #f08f7f; }
+
+.zone {
+  flex: 1; border: 1px solid var(--line); border-radius: 10px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  padding: 24px; text-align: center; position: relative; touch-action: none;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.zone.cue { border-color: var(--me); }
+.zone.flash { background-color: rgba(255, 255, 255, 0.06); }
+.zone.serve { border-color: var(--accent); }
+.status { font-size: 34px; font-weight: 800; letter-spacing: -0.01em; }
+.status-sub { color: var(--muted); font-size: 16px; min-height: 1.3em; font-variant-numeric: tabular-nums; }
+.meter { width: 70%; height: 8px; background: rgba(255, 255, 255, 0.07); border-radius: 4px; overflow: hidden; margin-top: 18px; }
+#meter-fill { height: 100%; width: 0; background: var(--me); transition: width 0.12s; }
+.meter-label { color: var(--muted); font-size: 13px; }
+.action { width: 80%; margin-top: 14px; }
+.note { color: #f0c27a; font-size: 14px; margin: 8px 0 0; }
+
+.mods { display: flex; gap: 12px; }
+.mod {
+  flex: 1; height: 86px; border: 1px solid var(--line); border-radius: 10px; background: transparent; color: var(--muted);
+  font: 700 16px var(--font); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  touch-action: none;
+}
+.mod svg { width: 28px; height: 28px; }
+.mod.held { color: var(--text); border-color: var(--me); background: rgba(255, 255, 255, 0.06); }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pickleball</title>
+<link rel="stylesheet" href="css/host.css">
+</head>
+<body>
+<canvas id="view"></canvas>
+
+<!-- Lobby -->
+<section id="lobby" class="panel">
+  <header>
+    <h1>Pickleball</h1>
+    <p class="sub">Scan with your phone camera to join. Your phone becomes the paddle.</p>
+  </header>
+
+  <div class="join">
+    <div id="qr" class="qr" aria-label="QR code to join"></div>
+    <div class="join-meta">
+      <div class="label">Room</div>
+      <div id="room-code" class="code">----</div>
+      <div id="join-url" class="url"></div>
+      <div id="net-status" class="net-status">Connecting to signalling server</div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="label">Players</div>
+    <ul id="slots" class="slots">
+      <li data-slot="1"><span class="swatch" style="background:#f0a43a"></span><span class="slot-name">Player 1</span><span class="slot-state">Waiting</span></li>
+      <li data-slot="2"><span class="swatch" style="background:#ee6b5b"></span><span class="slot-name">Player 2</span><span class="slot-state">Waiting</span></li>
+    </ul>
+    <button id="kbd-btn" class="link">Add keyboard player</button>
+  </div>
+
+  <div class="block">
+    <div class="label">Mode</div>
+    <div class="seg" id="mode-seg">
+      <button data-v="1v1">1 v 1</button>
+      <button data-v="1vcpu" class="on">1 v CPU</button>
+      <button data-v="2vcpu">2 v 2 CPU</button>
+    </div>
+  </div>
+
+  <div class="block" id="cpu-block">
+    <div class="label">CPU level</div>
+    <div class="seg" id="diff-seg">
+      <button data-v="easy">Easy</button>
+      <button data-v="normal" class="on">Normal</button>
+      <button data-v="hard">Hard</button>
+    </div>
+  </div>
+
+  <button id="start-btn" class="primary" disabled>Start game</button>
+  <p id="start-hint" class="hint">Waiting for 1 player</p>
+</section>
+
+<!-- In-game HUD -->
+<div id="hud" hidden>
+  <div class="scorebug">
+    <div class="row" data-team="0"><span class="srv"></span><span class="tname"></span><span class="tscore">0</span></div>
+    <div class="row" data-team="1"><span class="srv"></span><span class="tname"></span><span class="tscore">0</span></div>
+    <div class="call" id="call">0-0-2</div>
+  </div>
+  <div id="banner" class="banner"></div>
+  <div class="keys" id="keys" hidden>P1: A soft / S drive / D lob &nbsp;&nbsp; P2: J soft / K drive / L lob</div>
+</div>
+
+<!-- Game over -->
+<section id="over" class="panel center" hidden>
+  <div class="label">Game</div>
+  <h2 id="over-title">Winner</h2>
+  <div id="over-score" class="final">11 - 7</div>
+  <div class="row-btns">
+    <button id="rematch-btn" class="primary">Rematch</button>
+    <button id="lobby-btn">Back to lobby</button>
+  </div>
+  <p class="hint">Player 1 can also tap Rematch on their phone</p>
+</section>
+
+<script src="vendor/peerjs.min.js"></script>
+<script type="module" src="js/host.js"></script>
+</body>
+</html>
